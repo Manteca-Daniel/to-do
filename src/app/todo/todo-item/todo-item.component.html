@@ -1,0 +1,6 @@
+<div class="todo-item">
+    <input type="checkbox" [checked]="task.completed" (change)="toggleTask()">
+    <span [class.completed]="task.completed">{{ task.text }}</span>
+    <button (click)="deleteTask()">❌</button>
+  </div>
+  
