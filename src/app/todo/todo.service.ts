@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TodoService {
-  private todos: { id: number, text: string, completed: boolean }[] = [];
+  private todos: { id: number; text: string; completed: boolean }[] = [];
 
   constructor() {
     this.loadFromLocalStorage();
@@ -15,9 +15,9 @@ export class TodoService {
   }
 
   private loadFromLocalStorage() {
-    const data = localStorage.getItem('todos');
-    if (data) {
-      this.todos = JSON.parse(data);
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      this.todos = JSON.parse(savedTodos);
     }
   }
 
@@ -26,28 +26,27 @@ export class TodoService {
   }
 
   addTodo(text: string) {
-    this.todos.push({ id: Date.now(), text, completed: false });
+    const newTodo = { id: Date.now(), text, completed: false };
+    this.todos.push(newTodo);
     this.saveToLocalStorage();
   }
 
-  updateTodo(id: number, text: string) {
-    const todo = this.todos.find(t => t.id === id);
-    if (todo) {
-      todo.text = text;
-      this.saveToLocalStorage();
-    }
+  deleteTodo(id: number) {
+    this.todos = this.todos.filter(todo => todo.id !== id);
+    this.saveToLocalStorage();
   }
 
   toggleTodo(id: number) {
-    const todo = this.todos.find(t => t.id === id);
-    if (todo) {
-      todo.completed = !todo.completed;
-      this.saveToLocalStorage();
-    }
+    this.todos = this.todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    this.saveToLocalStorage();
   }
 
-  deleteTodo(id: number) {
-    this.todos = this.todos.filter(t => t.id !== id);
+  updateTodo(id: number, newText: string) {
+    this.todos = this.todos.map(todo =>
+      todo.id === id ? { ...todo, text: newText } : todo
+    );
     this.saveToLocalStorage();
   }
 }
