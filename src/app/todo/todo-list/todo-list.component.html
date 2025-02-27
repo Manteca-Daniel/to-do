@@ -1,16 +1,36 @@
 <div class="todo-container">
-    <h2>Mis Tareas</h2>
+    <h2>Lista de Tareas</h2>
 
-    <!-- ✅ Se corrige el evento para actualizar la lista -->
-    <app-todo-form (taskAdded)="updateList()"></app-todo-form>  
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar tarea..." />
+        <button>🔍</button>
+    </div>
 
-    <ul class="todo-list">
-        <li *ngFor="let todo of todos">
-            <input type="checkbox" [checked]="todo.completed" (change)="toggleTask(todo.id)">
-            <span [class.completed]="todo.completed">{{ todo.text }}</span>
+    <!-- Agregar nueva tarea -->
+    <div class="new-task">
+        <input type="text" [(ngModel)]="newTaskText" placeholder="Nueva tarea">
+        <button (click)="addTask()">Agregar</button>
+    </div>
 
-            <button (click)="deleteTask(todo.id)">🗑️</button>
-            <button (click)="editTask(todo)">✏️</button> <!-- ✅ Se corrigió el evento -->
+    <!-- Lista de tareas filtradas -->
+    <ul>
+        <li *ngFor="let todo of filteredTodos()">
+            <input type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo.id)">
+            
+            <span *ngIf="editingTaskId !== todo.id" (dblclick)="startEditing(todo.id)">
+                {{ todo.text }} - {{ formatDate(todo.createdAt) }}
+            </span>
+            
+            <input *ngIf="editingTaskId === todo.id" type="text" [(ngModel)]="todo.text" 
+                (blur)="editTask(todo.id, todo.text)" (keyup.enter)="editTask(todo.id, todo.text)">
+            
+            <button (click)="deleteTask(todo.id)">❌</button>
         </li>
     </ul>
+
+    <!-- Exportar / Importar -->
+    <div class="import-export">
+        <button (click)="exportTasks()">📥 Exportar</button>
+        <input type="file" (change)="importTasks($event)" accept=".json" />
+    </div>
 </div>
