@@ -1,8 +1,11 @@
 <header class="header">
-  <h1 class="header__title">Lista de Tareas</h1>
+  <h1 class="header__title">Lista de tareas</h1>
+  <div class="header__options">
+      <button class="header__toggle-theme">Modo Oscuro</button>
+      <a href="/privacy" class="header__privacy-link">Política de Privacidad</a>
+  </div>
 </header>
 
-
 <main class="main">
-  <app-todo-list></app-todo-list>
+  <router-outlet></router-outlet> <!-- Aquí se cargan las páginas -->
 </main>

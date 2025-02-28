@@ -1,10 +1,11 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { TodoService } from '../todo/todo.service';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter([]),  // ✅ Esto está bien
-    TodoService  // ✅ Proveedor correcto
+    provideRouter(routes, withComponentInputBinding()), // 👈 Agregar esto
+    TodoService
   ]
 };
