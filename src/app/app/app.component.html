@@ -2,12 +2,13 @@
   <h1 class="header__title">Lista de tareas</h1>
   <input type="range" min="0" max="100" [value]="brightness" (input)="updateDarkMode($event)" />
   <div class="header__options">
-      <!-- <button (click)="toggleDarkMode()" class="header__toggle-theme">Modo Oscuro</button> -->
+      <a href="/" class="header__inicio-link">Inicio</a>
+      <a href="/home" class="header__home-link">Home</a>
       <a href="/contact" class="header__contact-link">Contacto</a>
       <a href="/privacy" class="header__privacy-link">Política de Privacidad</a>
   </div>
 </header>
 
 <main class="main">
-  <router-outlet></router-outlet> <!-- Aquí se cargan las páginas -->
+  <router-outlet></router-outlet>
 </main>
