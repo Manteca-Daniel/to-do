@@ -12,4 +12,12 @@ import { RouterOutlet } from '@angular/router';
 
 export class AppComponent {
   title = 'to-do';
+  brightness = 0;
+  updateDarkMode(event: Event) {
+    this.brightness = +(event.target as HTMLInputElement).value;
+    
+    // Ajusta el color de fondo de acuerdo al brillo
+    const darkness = 255 - this.brightness * 2; // Más gradual
+    document.body.style.backgroundColor = `rgb(${darkness}, ${darkness}, ${darkness})`;
+  }
 }
