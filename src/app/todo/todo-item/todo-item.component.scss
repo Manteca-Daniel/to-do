@@ -22,3 +22,17 @@
     }
   }
   
+  @media (max-width: 480px) {
+    .todo-item {
+      padding: 0.5rem;
+    }
+  
+    span {
+      font-size: 0.9rem;
+    }
+  
+    button {
+      font-size: 1rem;
+    }
+  }
+  
