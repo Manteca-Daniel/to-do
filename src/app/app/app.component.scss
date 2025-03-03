@@ -65,7 +65,7 @@
 }
 
 .main {
-    flex: 1;
+    flex-grow: 1;
     padding: 20px;
     text-align: center;
 
@@ -74,9 +74,11 @@
     }
 }
 
-.footer {
-    padding: 0 10;
+footer {
     width: 100%;
+    background: $secondary-color; // Asegura que tenga un fondo visible
+    padding: 10px 0;
+    text-align: center;
 }
 
 // Carrusel de Imágenes

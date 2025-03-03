@@ -90,4 +90,29 @@
   input {
     display: flex;
   }
+
+}
+
+.app-description {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  background: #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+@media (max-width: 600px) {
+  .todo-container {
+      padding: 15px;
+      width: 90%;
+  }
+  
+  .search-bar, .new-task, .import-export {
+      flex-direction: column;
+      gap: 5px;
+  }
+
 }

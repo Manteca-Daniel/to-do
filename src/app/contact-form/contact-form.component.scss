@@ -3,6 +3,14 @@
     font-size: 14px;
   }
 
+  .form-wrapper {
+    background-color: white;
+  }
+  .white-space {
+    height: 100px;
+    background-color: white;
+  }
+
   @media (max-width: 768px) {
     .container {
       padding: 1rem;

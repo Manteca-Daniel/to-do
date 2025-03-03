@@ -9,6 +9,12 @@ html, body {
   flex-direction: column;
 }
 
+#app { // Asegúrate de que este es el contenedor principal de la aplicación
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Hace que el contenedor ocupe toda la pantalla
+}
+
 input[type="range"] {
     display: flex;
     justify-content: center;
