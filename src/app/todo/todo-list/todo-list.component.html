@@ -8,10 +8,10 @@
     </div>
 
     <div class="search-bar">
-        <input type="text" placeholder="Buscar tarea..." />
-        <button>🔍</button>
+        <input type="text" [(ngModel)]="searchText" placeholder="Buscar tarea...">
+        <button (click)="updateList()">🔍</button>
     </div>
-
+    
     <!-- Agregar nueva tarea -->
     <div class="new-task">
         <input type="text" [(ngModel)]="newTaskText" placeholder="Nueva tarea">

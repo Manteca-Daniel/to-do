@@ -63,7 +63,7 @@ export class TodoListComponent {
     return this.todos.filter(todo => 
       todo.text.toLowerCase().includes(this.searchText.toLowerCase())
     );
-  }
+  }  
 
   exportTasks() {
     const dataStr = this.todoService.exportTodos();
