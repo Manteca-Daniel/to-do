@@ -90,3 +90,17 @@
 .btn:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+}

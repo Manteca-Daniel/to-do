@@ -116,3 +116,21 @@
   }
 
 }
+
+@media (max-width: 768px) {
+  .container, .privacy-container, .todo-container {
+      padding: 10px;
+  }
+  
+  .grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .card {
+      padding: 15px;
+  }
+  
+  .search-bar, .new-task, .import-export {
+      flex-direction: column;
+  }
+}
