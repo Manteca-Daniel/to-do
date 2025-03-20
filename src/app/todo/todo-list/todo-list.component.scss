@@ -104,6 +104,26 @@
   text-align: justify;
 }
 
+.progress-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.4s ease-in-out;
+}
+
 @media (max-width: 600px) {
   .todo-container {
       padding: 15px;

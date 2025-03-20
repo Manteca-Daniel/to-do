@@ -3,7 +3,11 @@
 
     <div class="app-description">
         <p>
-            Bienvenido a nuestra aplicación de gestión de tareas. Aquí puedes añadir nuevas tareas, eliminarlas cuando ya no sean necesarias, modificarlas según lo que necesites, y marcarlas como completadas para llevar un seguimiento de tu productividad. Además, tienes la opción de exportar todas tus tareas en un archivo para guardarlas o compartirlas, e importarlas nuevamente cuando las necesites. Esta aplicación está diseñada para hacer tu organización diaria mucho más fácil y eficiente.
+            Bienvenido a nuestra aplicación de gestión de tareas. Aquí puedes añadir nuevas tareas, eliminarlas cuando
+            ya no sean necesarias, modificarlas según lo que necesites, y marcarlas como completadas para llevar un
+            seguimiento de tu productividad. Además, tienes la opción de exportar todas tus tareas en un archivo para
+            guardarlas o compartirlas, e importarlas nuevamente cuando las necesites. Esta aplicación está diseñada para
+            hacer tu organización diaria mucho más fácil y eficiente.
         </p>
     </div>
 
@@ -11,25 +15,33 @@
         <input type="text" [(ngModel)]="searchText" placeholder="Buscar tarea...">
         <button (click)="updateList()">🔍</button>
     </div>
-    
+
     <!-- Agregar nueva tarea -->
     <div class="new-task">
         <input type="text" [(ngModel)]="newTaskText" placeholder="Nueva tarea">
         <button (click)="addTask()">Agregar</button>
     </div>
 
+    <!-- Barra de Progreso -->
+    <div class="progress-container">
+        <label>Progreso: {{ completionPercentage }}%</label>
+        <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="completionPercentage"></div>
+        </div>
+    </div>
+
     <!-- Lista de tareas filtradas -->
     <ul>
         <li *ngFor="let todo of filteredTodos()">
             <input type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo.id)">
-            
+
             <span *ngIf="editingTaskId !== todo.id" (dblclick)="startEditing(todo.id)">
                 {{ todo.text }} - {{ formatDate(todo.createdAt) }}
             </span>
-            
-            <input *ngIf="editingTaskId === todo.id" type="text" [(ngModel)]="todo.text" 
+
+            <input *ngIf="editingTaskId === todo.id" type="text" [(ngModel)]="todo.text"
                 (blur)="editTask(todo.id, todo.text)" (keyup.enter)="editTask(todo.id, todo.text)">
-            
+
             <button (click)="deleteTask(todo.id)">❌</button>
         </li>
     </ul>

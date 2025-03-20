@@ -38,6 +38,12 @@ export class TodoListComponent {
     this.updateList();
   }
 
+  get completionPercentage(): number {
+    if (this.todos.length === 0) return 0;
+    const completedTasks = this.todos.filter(todo => todo.completed).length;
+    return Math.round((completedTasks / this.todos.length) * 100);
+  }
+
   toggleComplete(id: number) {
     this.todoService.toggleComplete(id);
     this.updateList();
