@@ -20,6 +20,10 @@ export class ContactFormComponent {
       // 👇 Usa bootstrap correctamente
       const modal = new bootstrap.Modal(document.getElementById('mensajeModal'));
       modal.show();
+
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
     }
   }
 }
